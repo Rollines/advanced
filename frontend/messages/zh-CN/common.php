@@ -10,4 +10,9 @@ return [
     'Remember Me' => '记住我',
     'Password' => '密码',
     'Username' => '用户名',
+    'Name' => '用户名',
+    'Email' => '邮箱',
+    'Subject' =>'主题',
+    'Body' =>'内容',
+    'Verification Code' => '验证码',
 ];

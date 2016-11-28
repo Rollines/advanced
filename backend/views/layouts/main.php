@@ -28,26 +28,37 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+//        'brandLabel' => 'My Company',
+        'brandLabel' => Yii::t('common','My Company'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => '首页', 'url' => ['/site/index']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => '登录', 'url' => ['/site/login']];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link']
-            )
-            . Html::endForm()
-            . '</li>';
+//        $menuItems[] = '<li>'
+//            . Html::beginForm(['/site/logout'], 'post')
+//            . Html::submitButton(
+//                '退出登录 (' . Yii::$app->user->identity->username . ')',
+//                ['class' => 'btn btn-link']
+//            )
+//            . Html::endForm()
+//            . '</li>';
+
+        $menuItems[] = [
+//                'label' => '登出(' . Yii::$app->user->identity->username . ')',
+            'label' => Yii::$app->user->identity->username,
+            'items' =>[
+                ['label' => '<i calss="icon-signout"></i>退出','url' => ['/site/logout'],'linkOptions' => ['data-method' => 'post']]
+            ],
+//                 'url' => ['/site/logout'],
+//                 'linkOptions' => ['data-method' => 'post'],
+        ];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
